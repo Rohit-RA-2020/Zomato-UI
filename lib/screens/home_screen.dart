@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:zomato_ui/screens/go_out_page.dart';
+import 'package:zomato_ui/screens/order_page.dart';
+import 'package:zomato_ui/screens/pro_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,9 +21,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Order Page'),
-    Text('Get Out Page'),
-    Text('Pro Page'),
+    OrderPage(),
+    GoOut(),
+    ProPage(),
   ];
 
   @override
