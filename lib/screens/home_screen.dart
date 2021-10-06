@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:zomato_ui/screens/go_out_page.dart';
 import 'package:zomato_ui/screens/order_page.dart';
 import 'package:zomato_ui/screens/pro_page.dart';
+import 'package:zomato_ui/screens/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -62,7 +63,14 @@ class _HomePageState extends State<HomePage> {
                 actions: <Widget>[
                   IconButton(
                     icon: const Icon(Icons.menu, color: Colors.black),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      );
+                    },
                   )
                 ],
               )
