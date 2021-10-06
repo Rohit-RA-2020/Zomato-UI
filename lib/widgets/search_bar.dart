@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SearchBox extends StatefulWidget {
-  String hintText;
-  SearchBox(this.hintText, {Key? key}) : super(key: key);
+  final String hintText;
+  const SearchBox(this.hintText, {Key? key}) : super(key: key);
 
   @override
   State<SearchBox> createState() => _SearchBoxState();

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:zomato_ui/screens/go_out_page.dart';
 import 'package:zomato_ui/screens/order_page.dart';
 import 'package:zomato_ui/screens/pro_page.dart';
+import 'package:zomato_ui/widgets/horizontal_card_list.dart';
 import 'package:zomato_ui/widgets/search_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // ignore: unused_field
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     GoOut(),
@@ -88,10 +90,18 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         body: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: SearchBox('Restaurant name, cusine, or a dish'),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: SizedBox(
+                height: 38,
+                child: ScrollableCard(),
+              ),
             ),
           ],
         ),

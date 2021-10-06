@@ -5,6 +5,6 @@ class GoOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Go Out Page');
+    return const Text('Go Out Page');
   }
 }
