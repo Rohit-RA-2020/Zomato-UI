@@ -37,13 +37,13 @@ class OrderPage extends StatelessWidget {
                 child: Text(
                   'Eat what makes you happy',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     fontSize: 20,
                   ),
                 ),
               ),
               FoodBar(),
-              FoodBar(),
+              FoodBar(rowNo: 2),
             ],
           ),
         )
