@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zomato_ui/widgets/food_bar.dart';
 import 'package:zomato_ui/widgets/horizontal_card_list.dart';
 import 'package:zomato_ui/widgets/search_bar.dart';
 
@@ -10,22 +12,40 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const <Widget>[
-        Padding(
+      children: <Widget>[
+        const Padding(
           padding: EdgeInsets.only(left: 10.0, right: 10.0),
           child: SearchBox('Restaurant name, cusine, or a dish'),
         ),
-        SizedBox(height: 10),
-        Padding(
+        const SizedBox(height: 10),
+        const Padding(
           padding: EdgeInsets.only(left: 10.0, right: 10.0),
           child: SizedBox(
             height: 38,
             child: ScrollableCard(),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Image(image: AssetImage('assets/images/offer.png')),
+        Expanded(
+          child: ListView(
+            children: const <Widget>[
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Image(image: AssetImage('assets/images/offer.png')),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15.0),
+                child: Text(
+                  'Eat what makes you happy',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              FoodBar(),
+              FoodBar(),
+            ],
+          ),
         )
       ],
     );
