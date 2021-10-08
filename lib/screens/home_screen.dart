@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:zomato_ui/screens/bottom_location_sheet.dart';
 import 'package:zomato_ui/screens/go_out_page.dart';
 import 'package:zomato_ui/screens/order_page.dart';
 import 'package:zomato_ui/screens/pro_page.dart';
@@ -37,9 +38,26 @@ class _HomePageState extends State<HomePage> {
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 title: Row(
-                  children: const <Widget>[
-                    Icon(Icons.location_pin, color: Colors.red),
-                    Padding(
+                  children: <Widget>[
+                    InkWell(
+                        child:
+                            const Icon(Icons.location_pin, color: Colors.red),
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (context) => SingleChildScrollView(
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom),
+                                child: const BottomLocationSheet(),
+                              ),
+                            ),
+                          );
+                        }),
+                    const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Vayusena Nagar',
