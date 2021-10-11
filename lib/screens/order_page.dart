@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:zomato_ui/widgets/food_bar.dart';
 import 'package:zomato_ui/widgets/horizontal_card_list.dart';
 import 'package:zomato_ui/widgets/restaurant_bar.dart';
+import 'package:zomato_ui/widgets/restaurant_item.dart';
 import 'package:zomato_ui/widgets/search_bar.dart';
 
 class OrderPage extends StatelessWidget {
@@ -57,6 +59,17 @@ class OrderPage extends StatelessWidget {
               ),
               FoodBar(),
               FoodBar(rowNo: 2),
+              Padding(
+                padding: EdgeInsets.only(left: 15.0, bottom: 5.0, top: 10),
+                child: Text(
+                  '100 Restaurants around you',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              RestaurantDetail(),
             ],
           ),
         )
@@ -64,3 +77,4 @@ class OrderPage extends StatelessWidget {
     );
   }
 }
+
