@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: _selectedIndex != 2
             ? AppBar(
+                automaticallyImplyLeading: false,
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 title: Row(
