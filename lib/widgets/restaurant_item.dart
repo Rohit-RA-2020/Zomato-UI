@@ -4,7 +4,22 @@ import 'package:google_fonts/google_fonts.dart';
 class RestaurantDetail extends StatelessWidget {
   const RestaurantDetail({
     Key? key,
+    required this.imgUrl,
+    required this.desc,
+    required this.time,
+    required this.rating,
+    required this.price,
+    required this.noOrders,
+    required this.name,
   }) : super(key: key);
+
+  final String imgUrl;
+  final String desc;
+  final String name;
+  final String time;
+  final String rating;
+  final String price;
+  final String noOrders;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +38,14 @@ class RestaurantDetail extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 padding:
                     const EdgeInsets.only(left: 16.0, bottom: 8.0, top: 8.0),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20)),
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://blogs.forbes.com/kylewong/files/2018/01/Large-2-Topping_Boxes_1_5x7-2.jpg'),
+                      imgUrl,
+                    ),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -50,10 +66,10 @@ class RestaurantDetail extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4)),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child:
-                              Text('38 mins', style: TextStyle(fontSize: 10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Text('$time mins',
+                              style: const TextStyle(fontSize: 10)),
                         ),
                       ),
                     )
@@ -66,16 +82,17 @@ class RestaurantDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  const Text(
-                    'Domino\'s Pizza',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  Text(
+                    name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Container(
-                    child: const Padding(
-                      padding: EdgeInsets.all(4.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
                       child: Text(
-                        '4.3 ⭐',
-                        style: TextStyle(
+                        '$rating ⭐',
+                        style: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -92,9 +109,8 @@ class RestaurantDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Pizza, fast Food, Beverages',
-                      style: GoogleFonts.openSans()),
-                  Text('₹150 for one', style: GoogleFonts.openSans())
+                  Text(desc, style: GoogleFonts.openSans()),
+                  Text('₹$price for one', style: GoogleFonts.openSans())
                 ],
               ),
             ),
@@ -102,8 +118,8 @@ class RestaurantDetail extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                children: const <Widget>[
-                  CircleAvatar(
+                children: <Widget>[
+                  const CircleAvatar(
                     backgroundColor: Color(0xFF707ebd),
                     radius: 10,
                     child: Icon(
@@ -112,8 +128,8 @@ class RestaurantDetail extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 5.0),
-                    child: Text('5750+ orders placed from here recently'),
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: Text('$noOrders+ orders placed from here recently'),
                   ),
                 ],
               ),

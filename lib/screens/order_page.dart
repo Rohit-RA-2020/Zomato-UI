@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:zomato_ui/widgets/food_bar.dart';
 import 'package:zomato_ui/widgets/horizontal_card_list.dart';
 import 'package:zomato_ui/widgets/restaurant_bar.dart';
@@ -30,12 +31,12 @@ class OrderPage extends StatelessWidget {
         ),
         Expanded(
           child: ListView(
-            children: const <Widget>[
-              Padding(
+            children: <Widget>[
+              const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Image(image: AssetImage('assets/images/offer.png')),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15.0, bottom: 5.0),
                 child: Text(
                   'Top brands for you',
@@ -45,9 +46,9 @@ class OrderPage extends StatelessWidget {
                   ),
                 ),
               ),
-              RestaurantBar(),
-              RestaurantBar(rowNo: 2),
-              Padding(
+              const RestaurantBar(),
+              const RestaurantBar(rowNo: 2),
+              const Padding(
                 padding: EdgeInsets.only(left: 15.0, bottom: 5.0),
                 child: Text(
                   'Eat what makes you happy',
@@ -57,9 +58,9 @@ class OrderPage extends StatelessWidget {
                   ),
                 ),
               ),
-              FoodBar(),
-              FoodBar(rowNo: 2),
-              Padding(
+              const FoodBar(),
+              const FoodBar(rowNo: 2),
+              const Padding(
                 padding: EdgeInsets.only(left: 15.0, bottom: 5.0, top: 10),
                 child: Text(
                   '100 Restaurants around you',
@@ -69,7 +70,26 @@ class OrderPage extends StatelessWidget {
                   ),
                 ),
               ),
-              RestaurantDetail(),
+              const RestaurantDetail(
+                name: 'Domino\'s Pizza',
+                imgUrl:
+                    'https://blogs.forbes.com/kylewong/files/2018/01/Large-2-Topping_Boxes_1_5x7-2.jpg',
+                desc: 'Pizza, Fast Food, Beverages',
+                time: '38',
+                rating: '4.3',
+                price: '150',
+                noOrders: '5750',
+              ),
+              const RestaurantDetail(
+                name: 'DacDenil\'s Burger',
+                imgUrl:
+                    'https://b.zmtcdn.com/data/pictures/chains/3/19276543/cfc6417f16ca11f81f071db7474805d2.jpeg',
+                desc: 'Fast Food, Berger',
+                time: '40',
+                rating: '4.0',
+                price: '150',
+                noOrders: '475',
+              )
             ],
           ),
         )
@@ -77,4 +97,3 @@ class OrderPage extends StatelessWidget {
     );
   }
 }
-
