@@ -21,32 +21,26 @@ class _SearchBoxState extends State<SearchBox> {
         ),
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Row(
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Icon(
+      child: SizedBox(
+        height: 50,
+        child: TextField(
+          controller: controller,
+          onEditingComplete: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
+
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          decoration: InputDecoration(
+            prefixIcon: const Icon(
               Icons.search,
               color: Colors.red,
             ),
+            label: Text(widget.hintText),
+            border: InputBorder.none,
           ),
-          Expanded(
-            child: TextField(
-              controller: controller,
-              onEditingComplete: () {
-                FocusScopeNode currentFocus = FocusScope.of(context);
-
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.unfocus();
-                }
-              },
-              decoration: InputDecoration(
-                hintText: widget.hintText,
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

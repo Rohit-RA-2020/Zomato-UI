@@ -33,67 +33,61 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: _selectedIndex != 2
-            ? AppBar(
-                automaticallyImplyLeading: false,
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                title: Row(
-                  children: <Widget>[
-                    InkWell(
-                        child:
-                            const Icon(Icons.location_pin, color: Colors.red),
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (context) => SingleChildScrollView(
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    bottom: MediaQuery.of(context)
-                                        .viewInsets
-                                        .bottom),
-                                child: const BottomLocationSheet(),
-                              ),
-                            ),
-                          );
-                        }),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Vayusena Nagar',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.transparent,
-                          shadows: [
-                            Shadow(
-                                offset: Offset(0, -3.5), color: Colors.black),
-                          ],
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                          decorationStyle: TextDecorationStyle.dashed,
-                          decorationColor: Colors.black54,
-                          decorationThickness: 2,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Row(
+            children: <Widget>[
+              InkWell(
+                  child: const Icon(Icons.location_pin, color: Colors.red),
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: const BottomLocationSheet(),
                         ),
                       ),
-                    )
-                  ],
+                    );
+                  }),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Vayusena Nagar',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.transparent,
+                    shadows: [
+                      Shadow(offset: Offset(0, -3.5), color: Colors.black),
+                    ],
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.underline,
+                    decorationStyle: TextDecorationStyle.dashed,
+                    decorationColor: Colors.black54,
+                    decorationThickness: 2,
+                  ),
                 ),
-                actions: <Widget>[
-                  IconButton(
-                    icon: const Icon(Icons.menu, color: Colors.black),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilePage(),
-                        ),
-                      );
-                    },
-                  )
-                ],
               )
-            : null,
+            ],
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.menu, color: Colors.black),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfilePage(),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
