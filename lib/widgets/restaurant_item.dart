@@ -11,6 +11,8 @@ class RestaurantDetail extends StatelessWidget {
     required this.price,
     required this.noOrders,
     required this.name,
+    required this.address,
+    this.addre = '',
   }) : super(key: key);
 
   final String imgUrl;
@@ -20,6 +22,8 @@ class RestaurantDetail extends StatelessWidget {
   final String rating;
   final String price;
   final String noOrders;
+  final bool address;
+  final String addre;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class RestaurantDetail extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20)),
                   image: DecorationImage(
-                    image: NetworkImage(
+                    image: AssetImage(
                       imgUrl,
                     ),
                     fit: BoxFit.fill,
@@ -68,8 +72,8 @@ class RestaurantDetail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4)),
                         child: Padding(
                           padding: const EdgeInsets.all(2.0),
-                          child: Text('$time mins',
-                              style: const TextStyle(fontSize: 10)),
+                          child:
+                              Text(time, style: const TextStyle(fontSize: 10)),
                         ),
                       ),
                     )
@@ -113,6 +117,10 @@ class RestaurantDetail extends StatelessWidget {
                   Text('₹$price for one', style: GoogleFonts.openSans())
                 ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: address ? Text(addre) : null,
             ),
             const Divider(),
             Padding(

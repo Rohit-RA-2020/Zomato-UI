@@ -44,8 +44,8 @@ class CardItem extends StatelessWidget {
         children: <Widget>[
           Image.asset(
             img,
-            height: 80,
-            width: 80,
+            height: 70,
+            width: 70,
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
