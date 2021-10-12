@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zomato_ui/widgets/carousel.dart';
 import 'package:zomato_ui/widgets/custom_rect_cards.dart';
 import 'package:zomato_ui/widgets/horizontal_card_list.dart';
 import 'package:zomato_ui/widgets/restaurant_item.dart';
@@ -38,7 +39,18 @@ class GoOut extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(left: 15.0, bottom: 5.0, top: 15.0),
                 child: Text(
-                  'Popular restaurants around you',
+                  'Curated collections',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              const CarouselList(),
+              const Padding(
+                padding: EdgeInsets.only(left: 15.0, bottom: 5.0, top: 15.0),
+                child: Text(
+                  'Popular Restaurants Around you',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -74,3 +86,5 @@ class GoOut extends StatelessWidget {
     );
   }
 }
+
+
