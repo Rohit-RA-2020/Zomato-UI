@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zomato_ui/screens/search_screen.dart';
 
 class SearchBox extends StatefulWidget {
   final String hintText;
@@ -24,6 +25,14 @@ class _SearchBoxState extends State<SearchBox> {
       child: SizedBox(
         height: 50,
         child: TextField(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SearchScreen(),
+              ),
+            );
+          },
           controller: controller,
           onEditingComplete: () {
             FocusScopeNode currentFocus = FocusScope.of(context);
@@ -37,7 +46,7 @@ class _SearchBoxState extends State<SearchBox> {
               Icons.search,
               color: Colors.red,
             ),
-            label: Text(widget.hintText),
+            hintText: widget.hintText,
             border: InputBorder.none,
           ),
         ),

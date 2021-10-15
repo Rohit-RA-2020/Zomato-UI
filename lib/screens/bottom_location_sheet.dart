@@ -30,10 +30,37 @@ class BottomLocationSheet extends StatelessWidget {
                       fontSize: 20, fontWeight: FontWeight.w600),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                child: SearchBox('Search for your location'),
-              ),
+              Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  child: Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: Colors.grey,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: SizedBox(
+                      height: 50,
+                      child: TextField(
+                        onEditingComplete: () {
+                          FocusScopeNode currentFocus = FocusScope.of(context);
+
+                          if (!currentFocus.hasPrimaryFocus) {
+                            currentFocus.unfocus();
+                          }
+                        },
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.red,
+                          ),
+                          hintText: 'Search for your location',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  )),
               ListTile(
                 onTap: () {
                   print('Location tile Tapped');
