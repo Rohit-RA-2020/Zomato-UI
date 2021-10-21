@@ -41,8 +41,32 @@ class _HomePageState extends State<HomePage> {
                 title: Row(
                   children: <Widget>[
                     InkWell(
-                        child:
-                            const Icon(Icons.location_pin, color: Colors.red),
+                        child: Row(
+                          children: const <Widget>[
+                            Icon(Icons.location_pin, color: Colors.red),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                'Vayusena Nagar',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.transparent,
+                                  shadows: [
+                                    Shadow(
+                                        offset: Offset(0, -3.5),
+                                        color: Colors.black),
+                                  ],
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  decorationStyle: TextDecorationStyle.dashed,
+                                  decorationColor: Colors.black54,
+                                  decorationThickness: 2,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        //
                         onTap: () {
                           showModalBottomSheet(
                             context: context,
@@ -58,25 +82,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                           );
                         }),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Vayusena Nagar',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.transparent,
-                          shadows: [
-                            Shadow(
-                                offset: Offset(0, -3.5), color: Colors.black),
-                          ],
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                          decorationStyle: TextDecorationStyle.dashed,
-                          decorationColor: Colors.black54,
-                          decorationThickness: 2,
-                        ),
-                      ),
-                    )
                   ],
                 ),
                 actions: <Widget>[
