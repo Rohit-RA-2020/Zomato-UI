@@ -23,61 +23,46 @@ class _SearchScreenState extends State<SearchScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: SearchBox(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const SearchBox(),
+          automaticallyImplyLeading: false,
+          bottom: TabBar(
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                6.0,
+              ),
+              color: Colors.grey.shade900,
             ),
-            TabBarWidget(tabController1: tabController1)
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.grey.shade700,
+            controller: tabController1,
+            tabs: const <Widget>[
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'DELIVERY',
+                  style: TextStyle(fontSize: 18.0),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'DINING',
+                  style: TextStyle(fontSize: 18.0),
+                ),
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          controller: tabController1,
+          children: const <Widget>[
+            Center(child: Text('Search for Delivery')),
+            Center(child: Text('Search for Dining')),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class TabBarWidget extends StatelessWidget {
-  const TabBarWidget({
-    Key? key,
-    required this.tabController1,
-  }) : super(key: key);
-
-  final TabController? tabController1;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TabBar(
-        indicator: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            6.0,
-          ),
-          color: Colors.grey.shade900,
-        ),
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.grey.shade700,
-        controller: tabController1,
-        tabs: const <Widget>[
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'DELIVERY',
-              style: TextStyle(fontSize: 18.0),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'DINING',
-              style: TextStyle(fontSize: 18.0),
-            ),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }
 
