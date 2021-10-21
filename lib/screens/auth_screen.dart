@@ -10,6 +10,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  String dropdownValue = '+91';
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -67,7 +68,65 @@ class _AuthScreenState extends State<AuthScreen> {
                     )
                   ],
                 ),
-                field(size),
+                Container(
+                  height: size.height / 16,
+                  width: size.width / 1.12,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: size.width / 20,
+                      ),
+                      Container(
+                        height: size.height / 30,
+                        width: size.height / 30,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/india.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      DropdownButton<String>(
+                        value: dropdownValue,
+                        style: const TextStyle(color: Colors.black),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue = newValue!;
+                          });
+                        },
+                        items: <String>[
+                          '+91',
+                          '+93',
+                          '+355',
+                          '+213',
+                          '+376',
+                          '+2168'
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
+                              child: Text(value),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                      const Expanded(
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Enter Phone Number",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 SizedBox(
                   height: size.height / 40,
                 ),
@@ -167,52 +226,6 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget field(Size size) {
-    return Container(
-      height: size.height / 16,
-      width: size.width / 1.12,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: size.width / 20,
-          ),
-          Container(
-            height: size.height / 30,
-            width: size.height / 30,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/india.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const Text(
-            "\t\t+91",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Icon(
-            Icons.arrow_drop_down,
-          ),
-          const Expanded(
-            child: TextField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Enter Phone Number",
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
