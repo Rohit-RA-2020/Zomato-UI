@@ -30,8 +30,8 @@ class RestaurantDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MenuScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const MenuScreen()));
       },
       child: Container(
         padding: const EdgeInsets.all(5),
