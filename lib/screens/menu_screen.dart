@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zomato_ui/menuWidgets/menu_card.dart';
 import 'package:zomato_ui/menuWidgets/misc_details.dart';
-import 'package:zomato_ui/menuWidgets/tab_bar.dart';
 import 'package:zomato_ui/menuWidgets/title_widget.dart';
 import 'package:zomato_ui/widgets/search_bar.dart';
 
@@ -70,7 +70,44 @@ class _MenuScreenState extends State<MenuScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const TitleWidget(),
-            TabBarWidget(tabController1: tabController1),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 12.0, right: 8.0, left: 8.0, bottom: 8.0),
+              child: TabBar(
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    12.0,
+                  ),
+                  color: Colors.grey.shade900,
+                ),
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.grey.shade700,
+                controller: tabController1,
+                tabs: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(5.w),
+                    child: const Text(
+                      'DELIVERY',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: const Text(
+                      'DINING',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: const Text(
+                      'REVIEWS',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const MiscDetails(),
             const Padding(
               padding: EdgeInsets.all(10.0),

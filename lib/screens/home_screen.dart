@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )
                 : const SliverAppBar(
-                    toolbarHeight: 1,
+                    toolbarHeight: 0.1,
                     primary: false,
                     titleSpacing: 0.0,
                     automaticallyImplyLeading: false,
