@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zomato_ui/menuWidgets/app_bar.dart';
+import 'package:zomato_ui/menuWidgets/dining_widget.dart';
 import 'package:zomato_ui/menuWidgets/menu_card.dart';
 import 'package:zomato_ui/menuWidgets/misc_details.dart';
-import 'package:zomato_ui/menuWidgets/title_widget.dart';
+import 'package:zomato_ui/menuWidgets/review_widget.dart';
 import 'package:zomato_ui/widgets/search_bar.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -32,31 +33,6 @@ class _MenuScreenState extends State<MenuScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: IconButton(
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_a_photo_outlined, color: Colors.black),
-            onPressed: () {},
-          ),
-          IconButton(
-              icon: const Icon(Icons.bookmark_border_outlined,
-                  color: Colors.black),
-              onPressed: () {}),
-          IconButton(
-            icon: const Icon(Icons.share_outlined, color: Colors.black),
-            onPressed: () {},
-          )
-        ],
-      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           // Add your onPressed code here!
@@ -65,93 +41,69 @@ class _MenuScreenState extends State<MenuScreen>
         icon: const Icon(Icons.menu),
         backgroundColor: Colors.black,
       ),
-      body: ListView(
-        children: <Widget>[
-          const TitleWidget(),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: 12.0, right: 8.0, left: 8.0, bottom: 8.0),
-            child: TabBar(
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  12.0,
-                ),
-                color: Colors.grey.shade900,
-              ),
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.grey.shade700,
-              controller: tabController1,
-              tabs: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(5.w),
-                  child: const Text(
-                    'DELIVERY',
-                    style: TextStyle(fontSize: 16.0),
+      body: SafeArea(
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) =>
+              [customAppBar(context, tabController1!)],
+          body: TabBarView(
+            controller: tabController1,
+            children: <Widget>[
+              ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                children: <Widget>[
+                  const MiscDetails(),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SearchBox('Search within the menu...'),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.w),
-                  child: const Text(
-                    'DINING',
-                    style: TextStyle(fontSize: 16.0),
+                  Row(
+                    children: [
+                      Switch(
+                        value: _veg,
+                        activeColor: Colors.green,
+                        onChanged: (bool newValue) {
+                          setState(() {
+                            _veg = newValue;
+                          });
+                        },
+                      ),
+                      const Text('Veg'),
+                      Switch(
+                        value: _nonv,
+                        activeColor: Colors.red,
+                        onChanged: (bool newValue) {
+                          setState(() {
+                            _nonv = newValue;
+                          });
+                        },
+                      ),
+                      const Text('Non-Veg'),
+                    ],
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.w),
-                  child: const Text(
-                    'REVIEWS',
-                    style: TextStyle(fontSize: 16.0),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Recommended',
+                      style: GoogleFonts.openSans(
+                          fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          const MiscDetails(),
-          const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: SearchBox('Search within the menu...'),
-          ),
-          Row(
-            children: [
-              Switch(
-                value: _veg,
-                activeColor: Colors.green,
-                onChanged: (bool newValue) {
-                  setState(() {
-                    _veg = newValue;
-                  });
-                },
+                  const MenuCard(),
+                  const Divider(),
+                  const MenuCard(),
+                  const Divider(),
+                  const MenuCard(),
+                  const Divider(),
+                  const MenuCard(),
+                  const Divider(),
+                ],
               ),
-              const Text('Veg'),
-              Switch(
-                value: _nonv,
-                activeColor: Colors.red,
-                onChanged: (bool newValue) {
-                  setState(() {
-                    _nonv = newValue;
-                  });
-                },
-              ),
-              const Text('Non-Veg'),
+              const DiningItems(),
+              const ReviewItem()
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              'Recommended',
-              style: GoogleFonts.openSans(
-                  fontWeight: FontWeight.bold, fontSize: 15),
-            ),
-          ),
-          const MenuCard(),
-          const Divider(),
-          const MenuCard(),
-          const Divider(),
-          const MenuCard(),
-          const Divider(),
-          const MenuCard(),
-          const Divider(),
-        ],
+        ),
       ),
     );
   }
